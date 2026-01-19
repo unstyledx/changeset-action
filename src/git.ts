@@ -55,24 +55,19 @@ export class Git {
     this.cwd = args.cwd;
   }
 
-  async setupUser() {
+  async setupUser(userName?: string, userEmail?: string) {
     if (this.octokit) {
       return;
     }
-    await exec("git", ["config", "user.name", `"github-actions[bot]"`], {
+    const name = userName ?? "github-actions[bot]";
+    const email = userEmail ?? "41898282+github-actions[bot]@users.noreply.github.com";
+
+    await exec("git", ["config", "user.name", name], {
       cwd: this.cwd,
     });
-    await exec(
-      "git",
-      [
-        "config",
-        "user.email",
-        `"41898282+github-actions[bot]@users.noreply.github.com"`,
-      ],
-      {
-        cwd: this.cwd,
-      }
-    );
+    await exec("git", ["config", "user.email", email], {
+      cwd: this.cwd,
+    });
   }
 
   async pushTag(tag: string) {

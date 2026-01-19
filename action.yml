@@ -24,6 +24,12 @@ inputs:
     description: Sets up the git user for commits as `"github-actions[bot]"`. Default to `true`
     required: false
     default: true
+  gitUserName:
+    description: "Custom git user name for commits. Defaults to `github-actions[bot]` if not provided. Only applies when `setupGitUser` is `true` and `commitMode` is `git-cli`."
+    required: false
+  gitUserEmail:
+    description: "Custom git user email for commits. Defaults to `41898282+github-actions[bot]@users.noreply.github.com` if not provided. Only applies when `setupGitUser` is `true` and `commitMode` is `git-cli`."
+    required: false
   createGithubReleases:
     description: "A boolean value to indicate whether to create Github releases after `publish` or not"
     required: false

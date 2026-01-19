@@ -31,10 +31,12 @@ const getOptionalInput = (name: string) => core.getInput(name) || undefined;
   });
 
   let setupGitUser = core.getBooleanInput("setupGitUser");
+  const gitUserName = getOptionalInput("gitUserName");
+  const gitUserEmail = getOptionalInput("gitUserEmail");
 
   if (setupGitUser) {
     core.info("setting git user");
-    await git.setupUser();
+    await git.setupUser(gitUserName, gitUserEmail);
   }
 
   core.info("setting GitHub credentials");

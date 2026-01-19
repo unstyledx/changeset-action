@@ -11,6 +11,8 @@ This action for [Changesets](https://github.com/changesets/changesets) creates a
 - commit - The commit message to use. Default to `Version Packages`
 - title - The pull request title. Default to `Version Packages`
 - setupGitUser - Sets up the git user for commits as `"github-actions[bot]"`. Default to `true`
+- gitUserName - Custom git user name for commits. Defaults to `github-actions[bot]` if not provided. Only applies when `setupGitUser` is `true` and `commitMode` is `git-cli`.
+- gitUserEmail - Custom git user email for commits. Defaults to `41898282+github-actions[bot]@users.noreply.github.com` if not provided. Only applies when `setupGitUser` is `true` and `commitMode` is `git-cli`.
 - createGithubReleases - A boolean value to indicate whether to create Github releases after `publish` or not. Default to `true`
 - commitMode - Specifies the commit mode. Use `"git-cli"` to push changes using the Git CLI, or `"github-api"` to push changes via the GitHub API. When using `"github-api"`, all commits and tags are GPG-signed and attributed to the user or app who owns the `GITHUB_TOKEN`. Default to `git-cli`.
 - cwd - Changes node's `process.cwd()` if the project is not located on the root. Default to `process.cwd()`
